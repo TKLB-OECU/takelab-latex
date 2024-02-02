@@ -1,0 +1,125 @@
+% #########################################
+%   卒業論文・修士論文テンプレート@takelab
+% #########################################
+%     
+%     
+% [Updated]
+% 2024-02-02: Released v1.94 - edited by Wakana HASHIMOTO (橋本 和奏)
+%             sty/dep-title.sty
+%             main.tex
+% 2020-02-01: Released v1.9x - edited by Yutaka TAKESUE (竹末 裕)
+%             main.tex
+% 2018-02-01: Released v1.9x - edited by Yoshiki MASHIMA (間嶋 義喜)
+%             main.tex
+% 2016-02-01: Released v1.9x - edited by Takuya OKADA (岡田 拓也)
+%             main.tex
+% 2010-02-28: Released v1.93 - edited by Tatsuya YAMAMOTO 
+%             sty/dep-title.sty
+%     
+% [Recommendation]
+%  　卒業論文・修士論文のように数十ページに及ぶ場合，
+%  本テンプレートに示す通り，構成と各章の文章は別々の
+%  texソースファイルで管理することを推奨する．
+%     
+% [Warning]
+%  　このテンプレートによって生じたいかなる不利益についても，
+%  当方は関知しないものとします．
+
+
+% ************************************************
+%                    プリアンプル
+% ************************************************
+
+
+% ************ 要件パッケージ ************
+\documentclass[12pt,a4j]{jsreport} % 文書クラス，文字サイズ，用紙サイズの設定
+\usepackage[dvipdfmx]{graphicx} % <- 提出用 (必ずコメントアウトは外す)
+% \usepackage[dvipdfmx, draft]{graphicx} % <- 文章レイアウト確認用
+\usepackage{./sty/dep-title} % style の指定
+
+% ************ 推奨パッケージ ************
+\usepackage{comment} % コメントアウト用のパッケージ
+\usepackage{multirow} % 表で行結合をするためのパッケージ
+\usepackage{bm} % 太字数式のためのパッケージ
+\usepackage{amsmath} % 数学関連の機能を提供するパッケージ
+\usepackage{amsfonts} % 数学用のフォントを提供するパッケージ
+\usepackage{color} % 色を使用するためのパッケージ
+\usepackage{url} % URLの表示のためのパッケージ
+\usepackage{listings, jlisting, color} % ソースコードを文中に表示するためのパッケージ，以下 その設定
+\definecolor{OliveGreen}{rgb}{0.0,0.6,0.0}
+\definecolor{Orenge}{rgb}{0.89,0.55,0}
+\definecolor{SkyBlue}{rgb}{0.28, 0.28, 0.95}
+\lstset{
+  language={Python}, % プログラミング言語の指定
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex,
+  keywordstyle={\color{SkyBlue}},     % キーワード(int, ifなど)の書体指定
+  commentstyle={\color{OliveGreen}},  % 注釈の書体
+  stringstyle=\color{Orenge}          % 文字列
+}
+
+
+\newcommand{\argmax}{\mathop{\rm argmax}\limits}
+\newcommand{\argmin}{\mathop{\rm argmin}\limits}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\bibname}{参考文献}
+
+% ************ 著書 ************
+\title{タイトル} % タイトル
+\author{電通 太郎} % 著者
+\date{令和4年2月25日} % 日付
+\id{GP2xA00x} % 学籍番号
+\professer{竹内 和広 教授} % takelab である限り変更する必要なし
+
+
+% ************************************************
+%              ここから文書の本体
+% ************************************************
+
+\begin{document}
+\maketitle % 表紙の作成
+\pagestyle{plain}
+\pagenumbering{roman}
+\setcounter{tocdepth}{3} % 目次を subsection まで表示する
+\tableofcontents % 目次の表示
+
+\newpage
+\pagenumbering{arabic}
+
+% section 1
+\chapter{はじめに}
+\input{src/1-introduction.tex}
+\newpage
+
+% section N
+\chapter{おわりに}
+\input{src/n-conclusion.tex}
+\newpage
+
+
+\chapter*{謝辞}
+% Acknowledgement
+\input{src/99-acknowledgement.tex}
+\newpage
+
+% bibtex の読み込み
+% \bibliographystyle{jplain} % <- アルファベット順で出力する場合
+\bibliographystyle{junsrt} % <- 引用された順で出力する場合
+\bibliography{ref}
+
+\end{document}

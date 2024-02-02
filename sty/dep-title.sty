@@ -1,0 +1,82 @@
+% ############################
+%       dep-title.sty
+% ############################
+%    
+% [Updated]
+% 2024-02-02: Released v1.94 - edited by Wakana Hashimoto (橋本 和奏)
+% 2010-02-28: Released v1.93 - edited by Tatsuya Yamamoto 
+%    
+%    
+% [Usage]
+% # 表紙のタイトル，著者等について
+%    　タイトル，著者等の情報は構成ファイル(main.tex)の
+%    プリアンプルにて，
+%        \title{},\id{},\author{},\professer{},\date{}
+%    の各項目に書き込むだけでよいため，本ファイルに
+%    直接書き込む必要はない．
+%    
+% # 卒業論文・修士論文との切り替え
+%    本ファイル(dep-title.sty) のコメントアウト部分で制御する
+    
+  
+
+\typeout{dep-title.sty 2024-02-02: Released v1.94 - edited by Wakana Hashimoto}
+
+\makeatletter
+
+\def\professer#1{\def\@professer{#1}}
+\def\id#1{\def\@id{#1}}
+
+\def\maketitle{
+  \begin{titlepage}
+    
+    \centerline{\Huge
+      % 不要な方をコメントアウトする
+      % 修\hspace{1.6em}士\hspace{1.6em}論\hspace{1.6em}文 % <- 修士論文用
+      卒\hspace{1.6em}業\hspace{1.6em}論\hspace{1.6em}文 % <- 卒業論文用
+    }
+    \vskip 7zh
+    
+    \vbox{{\leavevmode \hbox to \textwidth{\large\bf 論\hspace{1em}文\hspace{1em}名}}}
+    \vskip 2zh
+    \underline{\vbox{{\hbox to \textwidth{\Large\hfill\@title\hfill}}}}
+    
+    \vskip12.5zh
+    \rightline{
+      \large{
+        \begin{tabular}{rll}
+          指導教員名 & \underline{\makebox[12zw]{\@professer}} \\
+          &\\
+          &\\
+          提出年月日 & \@date \\
+          &\\
+          % 提出者 & 工学研究科 情報工学専攻\\
+          提出者 & 情報通信工学部 情報工学科\\
+          &\\
+          & 学生番号 \@id \\
+          &\\
+          & 氏名 \underline{\makebox[9zw]{\@author}} \\ 
+        \end{tabular}
+      }
+    }
+    \vskip 10zh
+    
+    \centerline{
+      \huge
+      大\hspace{0.4em}
+      阪\hspace{0.4em}
+      電\hspace{0.4em}
+      気\hspace{0.4em}
+      通\hspace{0.4em}
+      信\hspace{0.4em}
+      大\hspace{0.4em}
+      学
+    }
+    
+  \end{titlepage}
+  
+  \setcounter{footnote}{0}
+  \let\thanks\relax\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+  \let\maketitle\relax}
+
+\endinput

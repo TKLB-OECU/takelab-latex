@@ -1,0 +1,19 @@
+services:
+  uplatex:
+    image: ghcr.io/being24/latex-docker:latest
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
+
+  drawio:
+    image: rlespinasse/drawio-desktop-headless:latest
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
+
+  textlint:
+    image: node:slim
+    volumes:
+      - .:/workdir
+    working_dir: /workdir
+

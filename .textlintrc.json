@@ -1,0 +1,27 @@
+{
+  "plugins": {
+    "latex2e": true
+  },
+  "filters": {},
+  "rules": {
+    "@textlint-ja/no-synonyms": true,
+    "no-mixed-zenkaku-and-hankaku-alphabet": true,
+    "preset-ja-spacing": true,
+    "preset-ja-technical-writing": {
+      "no-mix-dearu-desumasu": {
+        "preferInHeader": "",
+        "preferInBody": "である",
+        "preferInList": "である",
+        "strict": false
+      },
+      "max-kanji-continuous-len": {
+        "max": 6,
+        "allow": [
+          "大阪電気通信大学",
+          "情報通信工学部"
+        ]
+      }
+    },
+    "spellcheck-tech-word": true
+  }
+}

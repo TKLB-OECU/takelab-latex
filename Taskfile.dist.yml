@@ -27,7 +27,7 @@ tasks:
       
   init:
     cmds:
-      - touch {{ .TEX_ENTRY }}
+      - touch main.tex
       - mkdir -p {{ .FIG_DIR }}
       - mkdir -p out
     deps:

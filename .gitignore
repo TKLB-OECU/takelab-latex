@@ -1,0 +1,7 @@
+# text-lint modules
+/node_modules
+
+
+# latex log files
+*.log
+*.aux

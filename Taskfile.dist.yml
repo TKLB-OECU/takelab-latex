@@ -1,0 +1,61 @@
+version: '3'
+
+vars:
+  DC: 'docker-compose'
+  TEX_ENTRY: 'main.tex'
+  TEX_OUTDIR: 'out'
+  FIG_DIR: 'fig'
+
+tasks:
+  build_latex:
+    aliases: [latex]
+    cmds:
+      - "{{ .DC }} run --rm uplatex uplatex -output-directory={{ .TEX_OUTDIR }} {{ .TEX_ENTRY }}"
+      - "{{ .DC }} run --rm uplatex dvipdfmx -o {{ .TEX_OUTDIR }}/{{ .TEX_ENTRY | replace `.tex` `.pdf` }} {{ .TEX_OUTDIR }}/{{ .TEX_ENTRY | replace `.tex` `.dvi` }}"
+
+  drawio_to_pdf:
+    aliases: [drawio]
+    cmds:
+      - "{{ .DC }} run --rm drawio -xrtf pdf -o {{ .FIG_DIR }} {{ .FIG_DIR }} --width 1080"
+
+  drawio_to_png:
+    cmds:
+      - "{{ .DC }} run --rm drawio -xrtf png -o {{ .FIG_DIR }} {{ .FIG_DIR }} --width 1080"
+
+  text-lint:
+    aliases: [lint]
+    cmds:
+      - "{{ .DC }} run --rm textlint npx textlint *.tex **/*.tex"
+      
+  init:
+    cmds:
+      - touch {{ .TEX_ENTRY }}
+      - mkdir -p {{ .FIG_DIR }}
+      - mkdir -p {{ .TEX_OUTDIR }}
+    deps:
+      - dc_up
+      - node_init
+      
+  dc_up:
+    cmds:
+      - "{{ .DC }} up -d"
+
+  dc_down:
+    cmds:
+      - "{{ .DC }} down"
+
+  dc_restart:
+    cmds:
+      - "{{ .DC }} restart"
+
+  node_init:
+    cmds:
+      - "{{ .DC }} run --rm textlint npm install"
+  
+  rm-png:
+    cmds:
+      - rm -f {{ .FIG_DIR }}/*.png
+
+  rm-pdf:
+    cmds:
+      - rm -f {{ .FIG_DIR }}/*.pdf

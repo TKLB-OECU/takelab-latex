@@ -2,16 +2,14 @@ version: '3'
 
 vars:
   DC: 'docker-compose'
-  TEX_ENTRY: 'main.tex'
-  TEX_OUTDIR: 'out'
   FIG_DIR: 'fig'
 
 tasks:
   build_latex:
     aliases: [latex]
     cmds:
-      - "{{ .DC }} run --rm uplatex uplatex -output-directory={{ .TEX_OUTDIR }} {{ .TEX_ENTRY }}"
-      - "{{ .DC }} run --rm uplatex dvipdfmx -o {{ .TEX_OUTDIR }}/{{ .TEX_ENTRY | replace `.tex` `.pdf` }} {{ .TEX_OUTDIR }}/{{ .TEX_ENTRY | replace `.tex` `.dvi` }}"
+      - "{{ .DC }} run --rm uplatex uplatex -output-directory=out main.tex"
+      - "{{ .DC }} run --rm uplatex dvipdfmx -o out/main.pdf out/main.dvi"
 
   drawio_to_pdf:
     aliases: [drawio]
@@ -31,7 +29,7 @@ tasks:
     cmds:
       - touch {{ .TEX_ENTRY }}
       - mkdir -p {{ .FIG_DIR }}
-      - mkdir -p {{ .TEX_OUTDIR }}
+      - mkdir -p out
     deps:
       - dc_up
       - node_init

@@ -4,6 +4,12 @@ services:
     volumes:
       - .:/workdir
     working_dir: /workdir
+    command: >
+      wget http://teacher.nagano-nct.ac.jp/fujita/files/jlisting.sty &&
+      mv jlisting.sty /usr/local/texlive/2023/tex/latex/jlisting/ &&
+      chmod +r /usr/local/texlive/2023/tex/latex/jlisting/jlisting.sty &&
+      mktexlsr
+      
 
   drawio:
     image: rlespinasse/drawio-desktop-headless:latest

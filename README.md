@@ -27,16 +27,28 @@
 ### 卒業論文・修士論文との切り替え
 styleファイル (**sty/dep-title.sty**) のコメントアウト部分で制御する．
 
+
 # 初期設定
 ## 必要なソフトウェア
+- git
 - Docker
 - Node.js
+
+## リポジトリのフォーク
+```bash
+git clone --bare https://github.com/TKLB-OECU/takelab-paper-latex
+cd takelab-paper-latex.git
+# ここでgithub上のprivateリポジトリを作成しておく
+git push --mirror git@github.com:自分のgithubnのユーザー名/作成したリポジトリ名
+cd ../
+rm -rf takelab-paper-latex.git
+```
 
 ## インストール
 1. DockerとNode.jsがインストールされていることを確認してください。
 2. go-taskをインストール
 ```bash
-npm install -g go-task
+npm install -g @go-task\cli
 ```
 3. ターミナルで以下のコマンドを実行
 ```bash

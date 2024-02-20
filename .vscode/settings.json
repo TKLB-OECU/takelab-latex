@@ -1,0 +1,39 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+          "name": "uplatex",
+          "command": "docker-compose",
+          "args": [
+            "run",
+            "--rm",
+            "uplatex",
+            "uplatex",
+            "-output-directory=out",
+            "main.tex"
+          ]
+        },
+        {
+            "name": "dvipdfmx",
+            "command": "docker-compose",
+            "args": [
+              "run",
+              "--rm",
+              "uplatex",
+              "dvipdfmx",
+              "-o",
+              "out/main.pdf",
+              "out/main.dvi"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+          "name": "compile",
+          "tools": [
+            "uplatex",
+            "dvipdfmx"
+          ]
+        }
+    ],
+    "latex-workshop.latex.autoBuild.run": "onFileChange",
+}

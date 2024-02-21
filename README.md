@@ -18,9 +18,9 @@
 ## Usage
 
 ### 表紙のタイトル，著者等について
-タイトル，著者等の情報は構成ファイル(main.tex)のプリアンプルにて，
+タイトル，著者等の情報は構成ファイル(main.tex)のプリアンブルにて，
 ```latex
-        \title{},\id{},\author{},\professer{},\date{}
+        \title{},\id{},\author{},\professor{},\date{}
 ```
 の各項目に書き込むだけでよいため，styleファイル (**sty/dep-title.sty**) に直接書き込む必要はない．
 

@@ -11,8 +11,8 @@
 % [Usage]
 % # 表紙のタイトル，著者等について
 %    　タイトル，著者等の情報は構成ファイル(main.tex)の
-%    プリアンプルにて，
-%        \title{},\id{},\author{},\professer{},\date{}
+%    プリアンブルにて，
+%        \title{},\id{},\author{},\professor{},\date{}
 %    の各項目に書き込むだけでよいため，本ファイルに
 %    直接書き込む必要はない．
 %    
@@ -25,7 +25,7 @@
 
 \makeatletter
 
-\def\professer#1{\def\@professer{#1}}
+\def\professor#1{\def\@professor{#1}}
 \def\id#1{\def\@id{#1}}
 
 \def\maketitle{
@@ -52,7 +52,7 @@
     %% 指導教員
     \centerline{\large 指導教員}
     \vskip 1zh
-    \centerline{\large \@professer}
+    \centerline{\large \@professor}
 
     \vskip 4zh
     

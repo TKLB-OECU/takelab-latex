@@ -1,8 +1,9 @@
 % ############################
-%       dep-title.sty
+%       master-cover.sty
 % ############################
 %    
 % [Updated]
+% 2024-02-21: Released v1.96 - edited by Wakana Hashimoto (橋本 和奏)
 % 2024-02-02: Released v1.94 - edited by Wakana Hashimoto (橋本 和奏)
 % 2010-02-28: Released v1.93 - edited by Tatsuya Yamamoto 
 %    
@@ -20,7 +21,7 @@
 
 
 
-\typeout{dep-title.sty 2024-02-02: Released v1.94 - edited by Wakana Hashimoto}
+\typeout{master-cover.sty 2024-02-21: Released v1.96 - edited by Wakana Hashimoto}
 
 \makeatletter
 
@@ -29,51 +30,50 @@
 
 \def\maketitle{
   \begin{titlepage}
-    
-    \centerline{\Huge
-      修\hspace{1.6em}士\hspace{1.6em}論\hspace{1.6em}文 % <- 修士論文用
-    }
-    \vskip 7zh
-    
-    \vbox{{\leavevmode \hbox to \textwidth{\large\bf 論\hspace{1em}文\hspace{1em}名}}}
-    \vskip 2zh
-    \underline{\parbox{\textwidth}{\centering\Large\@title}}
-    
-    \vskip9zh
-    \rightline{
-      \large{
-        \begin{tabular}{rll}
-          指導教員名 & \underline{\makebox[12zw]{\@professer}} \\
-          &\\
-          &\\
-          提出年月日 & \@date \\
-          &\\
-          提出者 & 工学研究科 情報工学コース\\
-          &\\
-          & 学生番号 \@id \\
-          &\\
-          & 氏名 \underline{\makebox[9zw]{\@author}} \\ 
-        \end{tabular}
-      }
-    }
-    \vskip 8zh
-    
-    \centerline{
-      \huge
-      大\hspace{0.4em}
-      阪\hspace{0.4em}
-      電\hspace{0.4em}
-      気\hspace{0.4em}
-      通\hspace{0.4em}
-      信\hspace{0.4em}
-      大\hspace{0.4em}
-      学
+
+    % 修士論文用
+    \centerline{\Large
+      修\hspace{0.2em}
+      士\hspace{0.2em}
+      学\hspace{0.2em}
+      位\hspace{0.2em}
+      論\hspace{0.2em}
+      文
     }
     
+    \vskip 11zh
+
+    \centering{\LARGE
+      \@title
+    }
+    
+    \vskip 11zh
+
+    %% 指導教員
+    \centerline{\large 指導教員}
+    \vskip 1zh
+    \centerline{\large \@professer}
+
+    \vskip 4zh
+    
+    %% 提出者
+    \centerline{\large 提出者}
+    \vskip 1zh
+    \centerline{\large \@id \@author}
+    
+    \vskip 4zh
+    
+    \centerline{\large \@date}
+    
+    \vskip 4zh
+    
+    \centerline{\large 大阪電気通信大学大学院 工学研究科 工学専攻 情報工学コース}
+
   \end{titlepage}
   
   \setcounter{footnote}{0}
   \let\thanks\relax\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
-  \let\maketitle\relax}
+  \let\maketitle\relax
+}
 
 \endinput

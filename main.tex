@@ -4,6 +4,9 @@
 %    
 %     
 % [Updated]
+% 2024-02-02: Released v1.96 - edited by Wakana HASHIMOTO (橋本 和奏)
+%             表紙の切り替えを main.tex で行うように変更
+%             表紙のデザインを変更
 % 2024-02-14: Released v1.95 - edited by Yuta Nakamura (中村 勇太)
 %             執筆の効率化のため、LaTeXコンテナを追加
 %             誤字・脱字のチェックを行うプログラムを追加
@@ -30,7 +33,7 @@
 
 
 % ************************************************
-%                    プリアンプル
+%                    プリアンブル
 % ************************************************
 
 
@@ -38,7 +41,8 @@
 \documentclass[12pt,a4j]{jsreport} % 文書クラス，文字サイズ，用紙サイズの設定
 \usepackage[dvipdfmx]{graphicx} % <- 提出用 (必ずコメントアウトは外す)
 % \usepackage[dvipdfmx, draft]{graphicx} % <- 文章レイアウト確認用
-\usepackage{./sty/dep-title} % style の指定
+% \usepackage{./sty/master-cover} % style の指定 - 修士論文の場合
+\usepackage{./sty/bachelor-cover} % style の指定 - 卒業論文の場合
 
 % ************ 推奨パッケージ ************
 \usepackage{comment} % コメントアウト用のパッケージ
@@ -87,7 +91,7 @@
 \author{電通 太郎} % 著者
 \date{令和4年2月25日} % 日付
 \id{GP2xA00x} % 学籍番号
-\professer{竹内 和広 教授} % takelab である限り変更する必要なし
+\professor{竹内 和広 教授} % takelab である限り変更する必要なし
 
 
 % ************************************************

@@ -1,0 +1,77 @@
+% ############################
+%       bechelor-cover.sty
+% ############################
+%    
+% [Updated]
+% 2024-02-21: Released v1.96 - edited by Wakana Hashimoto (橋本 和奏)
+% 2024-02-02: Released v1.94 - edited by Wakana Hashimoto (橋本 和奏)
+% 2010-02-28: Released v1.93 - edited by Tatsuya Yamamoto 
+%    
+%    
+% [Usage]
+% # 表紙のタイトル，著者等について
+%    　タイトル，著者等の情報は構成ファイル(main.tex)の
+%    プリアンブルにて，
+%        \title{},\id{},\author{},\professor{},\date{}
+%    の各項目に書き込むだけでよいため，本ファイルに
+%    直接書き込む必要はない．
+%    
+% # 卒業論文・修士論文との切り替え
+%    styleファイルの指定を main.tex からコメントアウト部分で制御する
+
+
+
+\typeout{bechelor-cover.sty 2024-02-21: Released v1.96 - edited by Wakana Hashimoto}
+
+\makeatletter
+
+\def\professor#1{\def\@professor{#1}}
+\def\id#1{\def\@id{#1}}
+
+\def\maketitle{
+  \begin{titlepage}
+
+    % 卒業論文用
+    \centerline{\Large
+      卒\hspace{0.2em}
+      業\hspace{0.2em}
+      論\hspace{0.2em}
+      文
+    }
+    
+    \vskip 11zh
+
+    \centering{\LARGE
+      \@title
+    }
+    
+    \vskip 11zh
+
+    %% 指導教員
+    \centerline{\large 指導教員}
+    \vskip 1zh
+    \centerline{\large \@professor}
+
+    \vskip 4zh
+    
+    %% 提出者
+    \centerline{\large 提出者}
+    \vskip 1zh
+    \centerline{\large \@id \@author}
+    
+    \vskip 4zh
+    
+    \centerline{\large \@date}
+    
+    \vskip 4zh
+    
+    \centerline{\large 大阪電気通信大学 情報通信工学部 情報工学科}
+
+  \end{titlepage}
+  
+  \setcounter{footnote}{0}
+  \let\thanks\relax\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+  \let\maketitle\relax
+}
+
+\endinput

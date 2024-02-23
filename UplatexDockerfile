@@ -1,0 +1,9 @@
+FROM ghcr.io/being24/latex-docker:latest
+
+ARG TEXLIVE_VERSION=2023
+
+# jlisting.sty の追加
+RUN wget http://teacher.nagano-nct.ac.jp/fujita/files/jlisting.sty && \
+    mv jlisting.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
+    chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/jlisting.sty && \
+    mktexlsr

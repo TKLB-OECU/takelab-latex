@@ -1,9 +1,11 @@
 {
+  "latex-workshop.latex.outDir": "%DIR%/out",
     "latex-workshop.latex.tools": [
         {
           "name": "uplatex",
-          "command": "docker-compose",
+          "command": "docker",
           "args": [
+            "compose",
             "run",
             "--rm",
             "uplatex",
@@ -14,8 +16,9 @@
         },
         {
             "name": "dvipdfmx",
-            "command": "docker-compose",
+            "command": "docker",
             "args": [
+              "compose",
               "run",
               "--rm",
               "uplatex",
